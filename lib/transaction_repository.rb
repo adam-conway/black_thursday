@@ -43,6 +43,10 @@ class TransactionRepository
     end
   end
 
+  def find_all_by_date(date)
+    @transactions.find_all do |transaction|
+      transaction.created_at == date
+
   def inspect
     "#<#{self.class} #{@transactions.size} rows>"
   end

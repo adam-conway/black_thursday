@@ -19,7 +19,6 @@ class Transaction
     @parent = parent
   end
 
-
   def invoice
     payload = ['transaction invoice', invoice_id]
     current_location = self

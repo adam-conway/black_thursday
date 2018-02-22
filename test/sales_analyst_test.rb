@@ -9,7 +9,7 @@ class SalesAnalystTest < Minitest::Test
       items:     './test/fixtures/items_list_truncated.csv',
       merchants: './test/fixtures/merchants_list_truncated.csv',
       invoices:  './test/fixtures/invoices_list_truncated.csv',
-      invoice_items: './test/fixtures/invoice_items_list_truncated.csv',
+      invoice_item: './test/fixtures/invoice_items_list_truncated.csv',
       transactions: './test/fixtures/transactions_list_truncated.csv',
       customers: './test/fixtures/customer_list_truncated.csv'
     )
@@ -127,5 +127,15 @@ class SalesAnalystTest < Minitest::Test
     assert_equal 36.0, @sales_analyst.invoice_status(:pending)
     assert_equal 56.0, @sales_analyst.invoice_status(:shipped)
     assert_equal 8.0, @sales_analyst.invoice_status(:returned)
+  end
+
+  def test_for_total_revenue_by_date
+    assert_equal 10, @sales_analyst.total_revenue_by_date('2012-02-26')
+  end
+
+  def test_for_top_revenue_earners
+    assert @sales_analyst.top_revenue_earners.is_a?(Array)
+    assert @sales_analyst.top_revenue_earners[0].is_a?(Merchant)
+    assert_equal '',  @sales_analyst
   end
 end
