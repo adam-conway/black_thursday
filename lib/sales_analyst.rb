@@ -202,6 +202,6 @@ class SalesAnalyst
   end
 
   def total_revenue_by_date(date)
-    
+    transaction_ids = @transactions.find_all_by_date(date)
   end
 end
