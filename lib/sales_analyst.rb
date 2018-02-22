@@ -202,6 +202,12 @@ class SalesAnalyst
   end
 
   def total_revenue_by_date(date)
-    transaction_ids = @transactions.find_all_by_date(date)
+    transactions = @transactions.find_all_by_date(date)
+    successful_transactions = transactions.find_all { |transaction| transaction.result == 'success' }
+    invoice_ids = successful_transactions.map(&:invoice_id)
+    invoice_items = invoice_ids.map do |invoice_id|
+      @invoice_items.find_all { |invoice_item| invoice_item.invoice_id == invoice_id }
+    end
+    binding.pry
   end
 end

@@ -9,7 +9,7 @@ class SalesAnalystTest < Minitest::Test
       items:     './test/fixtures/items_list_truncated.csv',
       merchants: './test/fixtures/merchants_list_truncated.csv',
       invoices:  './test/fixtures/invoices_list_truncated.csv',
-      invoice_items: './test/fixtures/invoice_items_list_truncated.csv',
+      invoice_item: './test/fixtures/invoice_items_list_truncated.csv',
       transactions: './test/fixtures/transactions_list_truncated.csv',
       customers: './test/fixtures/customer_list_truncated.csv'
     )
@@ -134,9 +134,8 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_for_top_revenue_earners
-    skip
     assert @sales_analyst.top_revenue_earners.is_a?(Array)
     assert @sales_analyst.top_revenue_earners[0].is_a?(Merchant)
-    assert_equal '', @sales_analyst
+    assert_equal '',  @sales_analyst
   end
 end
