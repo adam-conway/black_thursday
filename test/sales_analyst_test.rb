@@ -128,4 +128,15 @@ class SalesAnalystTest < Minitest::Test
     assert_equal 54.17, @sales_analyst.invoice_status(:shipped)
     assert_equal 8.33, @sales_analyst.invoice_status(:returned)
   end
+
+  def test_for_total_revenue_by_date
+    assert_equal 10, @sales_analyst.total_revenue_by_date('2012-02-26')
+  end
+
+  def test_for_top_revenue_earners
+    skip
+    assert @sales_analyst.top_revenue_earners.is_a?(Array)
+    assert @sales_analyst.top_revenue_earners[0].is_a?(Merchant)
+    assert_equal '', @sales_analyst
+  end
 end
